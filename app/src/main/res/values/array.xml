@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="name_order">
+        <item>First Name First</item>
+        <item>Last Name First</item>
+    </string-array>
+</resources>
