@@ -31,9 +31,16 @@ public class FullNameActivityFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
         Intent i=getActivity().getIntent();
         String full_name=i.getStringExtra("final_name");
+        fragmentText(full_name);
+    }
+
+    public void fragmentText(String s)
+    {
         TextView tv=(TextView)getActivity().findViewById(R.id.full_name);
-        tv.setText(full_name);
+        tv.setText(s);
+
     }
 }

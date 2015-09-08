@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -112,10 +113,13 @@ public class PeopleFragment extends Fragment {
             HttpURLConnection urlConnection = null;
             BufferedReader reader = null;
 
-            try{
-                URL url=new URL("https://api.myjson.com/bins/4i6jm");
+            try {
+                URL url = new URL("https://api.myjson.com/bins/4i6jm");
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.connect();
+            }catch(Exception e){Log.v("People Fragment", "Do you have internet connection?");
+                }
+            try{
                 InputStream inputStream = urlConnection.getInputStream();
                 StringBuffer buffer = new StringBuffer();
                 if (inputStream == null) {
@@ -155,7 +159,11 @@ public class PeopleFragment extends Fragment {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             this.dialog.dismiss();
+            if(Jsonstr==(null))
+                Toast.makeText(getActivity(),"Do you have an active internet connection?",Toast.LENGTH_SHORT).show();
             extractData();
         }
     }
+
+
 }

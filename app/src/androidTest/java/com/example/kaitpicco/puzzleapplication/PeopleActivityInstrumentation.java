@@ -2,6 +2,9 @@ package com.example.kaitpicco.puzzleapplication;
 
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.SmallTest;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.TableLayout;
 
 /**
@@ -22,6 +25,10 @@ public class PeopleActivityInstrumentation extends ActivityInstrumentationTestCa
     {
         TableLayout tl=(TableLayout)getActivity().findViewById(R.id.table);
         assertNotNull(tl);
+        final ViewGroup.LayoutParams layoutParams = tl.getLayoutParams();
+        assertEquals(layoutParams.width, WindowManager.LayoutParams.MATCH_PARENT);
+        assertEquals(layoutParams.height, WindowManager.LayoutParams.MATCH_PARENT);
+        assertTrue(View.VISIBLE == tl.getVisibility());
     }
 
 

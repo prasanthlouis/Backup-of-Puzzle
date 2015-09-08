@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -25,6 +26,7 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     private long pos=0;
     private ImageButton button;
     private MediaPlayer mp;
+    Behaviour comm;
     private EditText first_name,last_name;
     public MainActivityFragment() {
     }
@@ -48,6 +50,7 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        comm=(Behaviour)getActivity();
         button=(ImageButton)getActivity().findViewById(R.id.imageButton);
         Spinner spinner = (Spinner)getActivity().findViewById(R.id.spinner);
          first_name=(EditText)getActivity().findViewById(R.id.First_Name);
@@ -64,41 +67,57 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     @Override
     public void onResume() {
         super.onResume();
-        mp=MediaPlayer.create(getActivity(),R.raw.button_click);
-        button.setImageResource(R.drawable.abc);
+        mp=MediaPlayer.create(getActivity(), R.raw.button_click);
+        button.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttons));
     }
 
     @Override
     public void onClick(View v) {
+        String first_nametext="",last_nametext="",final_name="";
         mp.start();
-        button.setImageResource(R.drawable.abcd);
-        String final_name,first_nametext="",last_nametext="";
-        if(((first_nametext=first_name.getText().toString()).equals("")) || ((last_nametext=last_name.getText().toString()).equals(""))) {
+        button.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttons));
+        first_nametext=first_name.getText().toString();
+        last_nametext=last_name.getText().toString();
+        if(((first_nametext).equals("")) || ((last_nametext).equals(""))) {
             if(first_nametext.equals(""))
             {first_name.setError("You Didn't Enter First Name");}
             if(last_nametext.equals(""))
             {last_name.setError("You Didn't Enter Last Name");}
-            button.setImageResource(R.drawable.abc);
+            button.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttons));
         }
-        else {
+        else{
+        final_name=stringjoiner(first_nametext,last_nametext);}
+        if(final_name!="")
+        comm.paneData(final_name);
+
+
+
+
+    }
+
+    public String stringjoiner(String first_nametext,String last_nametext) {
+        String final_name;
             if (pos == 0) {
                 final_name = first_nametext + " " +last_nametext ;
             } else {
                 final_name = last_nametext + " " + first_nametext;
             }
-            Intent intent = new Intent(getActivity(), FullNameActivity.class);
-            intent.putExtra("final_name", final_name);
-            startActivity(intent);
-        }
-
+        return final_name;
 
 
     }
+
+    public void setVar(int x)
+    {
+        pos=x;
+    }
+
 
     @Override
     public void onStop() {
         super.onStop();
         mp.stop();
+        mp.release();
         Log.v("MainActivity","Stopped");
     }
 
@@ -112,4 +131,6 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+
 }
