@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -29,9 +28,8 @@ import java.net.URL;
  * A placeholder fragment containing a simple view.
  */
 public class PeopleFragment extends Fragment {
-    String Jsonstr = null;
-    TableLayout tl;
-    TableRow tr;
+    private String Jsonstr = null;
+    private TableLayout tl;
 
     public PeopleFragment() {
     }
@@ -72,10 +70,12 @@ public class PeopleFragment extends Fragment {
                 JSONObject dayForecast = jsonArray.getJSONObject(i);
                 firstname[i]=dayForecast.getString("first_name");
                 lastname[i]=dayForecast.getString("last_name");
-                tr=new TableRow(getActivity());
+                TableRow tr = new TableRow(getActivity());
                 TextView textView1=new TextView(getActivity());
                 TextView textView2=new TextView(getActivity());
+                if(!firstname[i].equals("null"))
                 textView1.setText(firstname[i]);
+                if(!lastname[i].equals("null"))
                 textView2.setText(lastname[i]);
                 textView1.setTextSize(20);
                 textView1.setGravity(Gravity.CENTER);
@@ -86,7 +86,7 @@ public class PeopleFragment extends Fragment {
                 Log.v("People", firstname[i]);
                 tr.addView(textView1);
                 tr.addView(textView2);
-                tr.setPadding(10,10,10,10);
+                tr.setPadding(10, 10, 10, 10);
                 tl.addView(tr);
 
                 Log.v("People Fragment->Data", dayForecast.toString());
@@ -98,7 +98,7 @@ public class PeopleFragment extends Fragment {
 
     public class FetchData extends AsyncTask<Void,Void,Void>{
 
-        private ProgressDialog dialog = new ProgressDialog(getActivity());
+        private final ProgressDialog dialog = new ProgressDialog(getActivity());
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -120,8 +120,8 @@ public class PeopleFragment extends Fragment {
             }catch(Exception e){Log.v("People Fragment", "Do you have internet connection?");
                 }
             try{
-                InputStream inputStream = urlConnection.getInputStream();
-                StringBuffer buffer = new StringBuffer();
+                InputStream inputStream = urlConnection != null ? urlConnection.getInputStream() : null;
+                StringBuilder buffer = new StringBuilder();
                 if (inputStream == null) {
                     return null;
                 }
@@ -129,7 +129,7 @@ public class PeopleFragment extends Fragment {
 
                 String line;
                 while ((line = reader.readLine()) != null) {
-                    buffer.append(line + "\n");
+                    buffer.append(line).append("\n");
                 }
                 Log.v("PeopleFragment",buffer.toString());
 

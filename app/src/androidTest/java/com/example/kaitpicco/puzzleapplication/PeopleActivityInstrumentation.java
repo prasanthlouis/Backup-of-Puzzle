@@ -27,9 +27,11 @@ public class PeopleActivityInstrumentation extends ActivityInstrumentationTestCa
         assertNotNull(tl);
         final ViewGroup.LayoutParams layoutParams = tl.getLayoutParams();
         assertEquals(layoutParams.width, WindowManager.LayoutParams.MATCH_PARENT);
-        assertEquals(layoutParams.height, WindowManager.LayoutParams.MATCH_PARENT);
+        assertEquals(layoutParams.height, WindowManager.LayoutParams.WRAP_CONTENT);
         assertTrue(View.VISIBLE == tl.getVisibility());
     }
+
+
 
 
     @Override

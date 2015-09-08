@@ -3,7 +3,6 @@ package com.example.kaitpicco.puzzleapplication;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
-import android.support.annotation.Nullable;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

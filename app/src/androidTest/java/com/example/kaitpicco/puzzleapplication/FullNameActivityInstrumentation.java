@@ -5,8 +5,6 @@ import android.test.suitebuilder.annotation.SmallTest;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 /**
@@ -84,7 +82,7 @@ public class FullNameActivityInstrumentation extends ActivityInstrumentationTest
     {
         TextView tv=(TextView)getActivity().findViewById(R.id.full_name);
         String s=getActivity().getString(R.string.blank);
-        assertEquals(s,tv.getText());
+        assertEquals(s, tv.getText());
 
     }
 

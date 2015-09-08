@@ -2,19 +2,13 @@ package com.example.kaitpicco.puzzleapplication;
 
 import android.content.Intent;
 import android.test.ActivityUnitTestCase;
-import android.test.suitebuilder.annotation.MediumTest;
 import android.test.suitebuilder.annotation.SmallTest;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-
-import junit.framework.TestCase;
 
 /**
  * Created by kaitpicco on 9/7/15.
  */
 public class MainActivityUnitTest extends ActivityUnitTestCase<MainActivity> {
-    Intent mLaunchIntent;
+    private Intent mLaunchIntent;
     public MainActivityUnitTest() {
         super(MainActivity.class);
     }
@@ -124,7 +118,7 @@ public class MainActivityUnitTest extends ActivityUnitTestCase<MainActivity> {
         startActivity(mLaunchIntent, null, null);
         MainActivityFragment ma=new MainActivityFragment();
         ma.setVar(1);
-        String s=ma.stringjoiner("","");
+        String s=ma.stringjoiner("", "");
         assertEquals(" ", s);
     }
 

@@ -1,8 +1,8 @@
 package com.example.kaitpicco.puzzleapplication;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +13,6 @@ import android.view.MenuItem;
 
 
 public class FullNameActivity extends AppCompatActivity {
-    private ShareActionProvider mShareActionProvider;
     private String full_name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,9 +61,10 @@ public class FullNameActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private Intent createshareintent(){
         Intent shareintent=new Intent(Intent.ACTION_SEND);
-        shareintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+        shareintent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
         shareintent.setType("text/plain");
         shareintent.putExtra(Intent.EXTRA_TEXT,"Hi there! I'm "+full_name+" #Brought to you by: PuzzleApplication" );
         return shareintent;

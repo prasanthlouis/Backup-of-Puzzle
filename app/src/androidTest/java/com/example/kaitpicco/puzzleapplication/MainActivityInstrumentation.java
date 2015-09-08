@@ -1,12 +1,10 @@
 package com.example.kaitpicco.puzzleapplication;
 
-import android.content.Intent;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.SmallTest;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
@@ -15,7 +13,6 @@ import android.widget.Spinner;
  * Created by kaitpicco on 9/7/15.
  */
 public class MainActivityInstrumentation extends ActivityInstrumentationTestCase2<MainActivity> {
-    MainActivity mainActivity;
     public MainActivityInstrumentation() {
         super(MainActivity.class);
     }
@@ -27,7 +24,7 @@ public class MainActivityInstrumentation extends ActivityInstrumentationTestCase
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        mainActivity=this.getActivity();
+
 
     }
 

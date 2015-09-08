@@ -1,10 +1,7 @@
 package com.example.kaitpicco.puzzleapplication;
 
 import android.annotation.TargetApi;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -12,12 +9,11 @@ import android.os.Bundle;
 import android.support.v7.widget.ShareActionProvider;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements Behaviour {
-public static boolean mTwoPane;
-    public ShareActionProvider mShareActionProvider;
-    public String full_name_checker=null;
+private static boolean mTwoPane;
+    private ShareActionProvider mShareActionProvider;
+    private String full_name_checker=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,9 +89,10 @@ public static boolean mTwoPane;
         }
 
     }
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private Intent createshareintent(){
             Intent shareintent = new Intent(Intent.ACTION_SEND);
-            shareintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+            shareintent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
             shareintent.setType("text/plain");
             shareintent.putExtra(Intent.EXTRA_TEXT, "Hi there! I'm " + full_name_checker + " #Brought to you by: PuzzleApplication");
             return shareintent;
