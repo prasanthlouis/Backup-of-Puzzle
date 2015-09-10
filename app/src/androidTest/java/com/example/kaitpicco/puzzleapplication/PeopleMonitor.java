@@ -34,6 +34,7 @@ public class PeopleMonitor extends ActivityInstrumentationTestCase2<MainActivity
                 People.class, receiverActivity.getClass());
         getInstrumentation().removeMonitor(receiverActivityMonitor);
 
+
     }
 
 

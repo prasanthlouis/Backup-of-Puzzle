@@ -47,20 +47,34 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        comm=(Behaviour)getActivity();
-        button=(ImageButton)getActivity().findViewById(R.id.imageButton);
+        buttoninit();
+        edittextinit();
+        spinnerinit();
+        comm=(Behaviour)getActivity(); //Interface
+
+
+
+    }
+
+    private void spinnerinit() {
         Spinner spinner = (Spinner)getActivity().findViewById(R.id.spinner);
-         first_name=(EditText)getActivity().findViewById(R.id.First_Name);
-         last_name=(EditText)getActivity().findViewById(R.id.Last_Name);
-        Typeface typeFace= Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Medium.ttf");
-        first_name.setTypeface(typeFace);
-        last_name.setTypeface(typeFace);
         String[] nameArray = getResources().getStringArray(R.array.name_order);
         adapter = new ArrayAdapter<CharSequence>(getActivity(),R.layout.spinneritem,nameArray);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
+    }
 
+    private void edittextinit() {
+        first_name=(EditText)getActivity().findViewById(R.id.First_Name);
+        last_name=(EditText)getActivity().findViewById(R.id.Last_Name);
+        Typeface typeFace= Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Medium.ttf");
+        first_name.setTypeface(typeFace);
+        last_name.setTypeface(typeFace);
+    }
+
+    private void buttoninit() {
+        button=(ImageButton)getActivity().findViewById(R.id.imageButton);
         button.setOnClickListener(this);
     }
 
@@ -79,10 +93,7 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
         first_nametext=first_name.getText().toString();
         last_nametext=last_name.getText().toString();
         if(((first_nametext).equals("")) || ((last_nametext).equals(""))) {
-            if(first_nametext.equals(""))
-            {first_name.setError("You Didn't Enter First Name");}
-            if(last_nametext.equals(""))
-            {last_name.setError("You Didn't Enter Last Name");}
+          blankchecker(first_nametext,last_nametext);
             button.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.buttons));
         }
         else{
@@ -93,6 +104,13 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
 
 
 
+    }
+
+    private void blankchecker(String first_nametext, String last_nametext) {
+        if(first_nametext.equals(""))
+        {first_name.setError("You Didn't Enter First Name");}
+        if(last_nametext.equals(""))
+        {last_name.setError("You Didn't Enter Last Name");}
     }
 
     public String stringjoiner(String first_nametext,String last_nametext) {
