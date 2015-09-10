@@ -7,9 +7,6 @@ import android.test.suitebuilder.annotation.MediumTest;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-/**
- * Created by kaitpicco on 9/10/15.
- */
 public class MainActivityIntentTest extends ActivityInstrumentationTestCase2<MainActivity> {
 
 
@@ -25,7 +22,7 @@ public class MainActivityIntentTest extends ActivityInstrumentationTestCase2<Mai
 
 
     //Checking if separate intent is firing on phones. This will fail on tablets because a new activity
-    //being started. On tablets, its the same activity, you're adding a dynamic fragment.
+    //being started. On tablets, its the same activity, you're adding a dynamic fragment. Make sure you turn on your screen.
     @MediumTest
     public void testSendMessageToReceiverActivity() {
         final ImageButton sendToReceiverButton = (ImageButton)getActivity().findViewById(R.id.imageButton);
@@ -46,6 +43,9 @@ public class MainActivityIntentTest extends ActivityInstrumentationTestCase2<Mai
         TouchUtils.clickView(this, sendToReceiverButton);
         FullNameActivity receiverActivity = (FullNameActivity)
                 receiverActivityMonitor.waitForActivityWithTimeout(5000);
+
+        //Checking if separate intent is firing on phones. This WILL FAIL on tablets because a new activity
+        //being started. On tablets, its the same activity, you're adding a dynamic fragment. Make sure you turn on your screen.
         assertNotNull("ReceiverActivity is null", receiverActivity);
 
     }

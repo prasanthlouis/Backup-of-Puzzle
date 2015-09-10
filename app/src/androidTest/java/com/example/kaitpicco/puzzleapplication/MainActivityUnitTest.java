@@ -4,9 +4,6 @@ import android.content.Intent;
 import android.test.ActivityUnitTestCase;
 import android.test.suitebuilder.annotation.SmallTest;
 
-/**
- * Created by kaitpicco on 9/7/15.
- */
 public class MainActivityUnitTest extends ActivityUnitTestCase<MainActivity> {
     private Intent mLaunchIntent;
     public MainActivityUnitTest() {

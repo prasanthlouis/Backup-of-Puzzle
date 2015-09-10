@@ -9,9 +9,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 
-/**
- * Created by kaitpicco on 9/7/15.
- */
 public class MainActivityInstrumentation extends ActivityInstrumentationTestCase2<MainActivity> {
     public MainActivityInstrumentation() {
         super(MainActivity.class);

@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
 
     <item android:id="@+id/See_People" android:title="@string/see_people"
-        app:showAsAction="never" />
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/person"/>
     <item
         android:id="@+id/menu_item_share"
         app:showAsAction="ifRoom"

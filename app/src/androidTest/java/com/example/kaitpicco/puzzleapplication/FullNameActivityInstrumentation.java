@@ -7,9 +7,6 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-/**
- * Created by kaitpicco on 9/7/15.
- */
 public class FullNameActivityInstrumentation extends ActivityInstrumentationTestCase2<FullNameActivity> {
 
     public FullNameActivityInstrumentation() {
@@ -85,13 +82,6 @@ public class FullNameActivityInstrumentation extends ActivityInstrumentationTest
         assertEquals(s, tv.getText());
 
     }
-
-
-
-
-
-
-
 
     @Override
     protected void tearDown() throws Exception {

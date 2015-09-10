@@ -7,9 +7,6 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.TableLayout;
 
-/**
- * Created by kaitpicco on 9/7/15.
- */
 public class PeopleActivityInstrumentation extends ActivityInstrumentationTestCase2<People> {
     public PeopleActivityInstrumentation() {
         super(People.class);

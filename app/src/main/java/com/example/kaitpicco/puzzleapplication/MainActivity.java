@@ -32,7 +32,7 @@ private static boolean mTwoPane;
 
         }
     }
-    public boolean getvar()
+    private boolean getvar()
     {
         return mTwoPane;
 
