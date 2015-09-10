@@ -1,6 +1,7 @@
 package com.example.kaitpicco.puzzleapplication;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -31,7 +32,15 @@ public class FullNameActivityFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        TextView tv=(TextView)getActivity().findViewById(R.id.full_name);
+        TextView tv2=(TextView)getActivity().findViewById(R.id.textView2);
+        TextView tv3=(TextView)getActivity().findViewById(R.id.textView3);
 
+        Typeface typeFace= Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-BoldCondensed.ttf");
+        Typeface typeFace2= Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Medium.ttf");
+        tv2.setTypeface(typeFace);
+        tv3.setTypeface(typeFace2);
+        tv.setTypeface(typeFace2);
         Intent i=getActivity().getIntent();
         String full_name=i.getStringExtra("final_name");
         fragmentText(full_name);

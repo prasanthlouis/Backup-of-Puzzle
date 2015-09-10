@@ -1,5 +1,6 @@
 package com.example.kaitpicco.puzzleapplication;
 
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -51,6 +52,9 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
         Spinner spinner = (Spinner)getActivity().findViewById(R.id.spinner);
          first_name=(EditText)getActivity().findViewById(R.id.First_Name);
          last_name=(EditText)getActivity().findViewById(R.id.Last_Name);
+        Typeface typeFace= Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Medium.ttf");
+        first_name.setTypeface(typeFace);
+        last_name.setTypeface(typeFace);
         String[] nameArray = getResources().getStringArray(R.array.name_order);
         adapter = new ArrayAdapter<CharSequence>(getActivity(),R.layout.spinneritem,nameArray);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

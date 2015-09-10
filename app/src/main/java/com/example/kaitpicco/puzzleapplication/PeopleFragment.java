@@ -2,6 +2,7 @@ package com.example.kaitpicco.puzzleapplication;
 
 import android.app.ProgressDialog;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -65,6 +66,7 @@ public class PeopleFragment extends Fragment {
         try {
             JSONObject Jsonobj = new JSONObject(Jsonstr);
             JSONArray jsonArray = Jsonobj.getJSONArray("people");
+            Typeface typeFace3= Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Thin.ttf");
             for (int i = 0; i < jsonArray.length(); i++) {
 
                 JSONObject dayForecast = jsonArray.getJSONObject(i);
@@ -78,11 +80,13 @@ public class PeopleFragment extends Fragment {
                 if(!lastname[i].equals("null"))
                 textView2.setText(lastname[i]);
                 textView1.setTextSize(20);
+                textView1.setTypeface(typeFace3);
                 textView1.setGravity(Gravity.CENTER);
                 textView1.setTextColor(Color.WHITE);
                 textView2.setTextSize(20);
                 textView2.setGravity(Gravity.CENTER);
                 textView2.setTextColor(Color.WHITE);
+                textView2.setTypeface(typeFace3);
                 Log.v("People", firstname[i]);
                 tr.addView(textView1);
                 tr.addView(textView2);
