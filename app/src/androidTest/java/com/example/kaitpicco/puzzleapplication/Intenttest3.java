@@ -20,7 +20,6 @@ public class Intenttest3 extends ActivityInstrumentationTestCase2<MainActivity> 
     @MediumTest
     public void testSendMessageToReceiverActivity4() {
         final ImageButton sendToReceiverButton = (ImageButton)getActivity().findViewById(R.id.imageButton);
-        final EditText et=(EditText)getActivity().findViewById(R.id.First_Name);
         final EditText et1=(EditText)getActivity().findViewById(R.id.Last_Name);
         getInstrumentation().runOnMainSync(new Runnable() {
             @Override

@@ -125,9 +125,9 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
 
     }
 
-    public void setVar(int x)
+    public void setVar()
     {
-        pos=x;
+        pos= 1;
     }
 
 

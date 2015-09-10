@@ -76,7 +76,7 @@ public class MainActivityUnitTest extends ActivityUnitTestCase<MainActivity> {
         mLaunchIntent = new Intent(getInstrumentation().getTargetContext(), MainActivity.class);
         startActivity(mLaunchIntent, null, null);
         MainActivityFragment ma=new MainActivityFragment();
-        ma.setVar(1);
+        ma.setVar();
         String s=ma.stringjoiner("Hello","There");
         assertEquals("There Hello", s);
     }
@@ -87,7 +87,7 @@ public class MainActivityUnitTest extends ActivityUnitTestCase<MainActivity> {
         mLaunchIntent = new Intent(getInstrumentation().getTargetContext(), MainActivity.class);
         startActivity(mLaunchIntent, null, null);
         MainActivityFragment ma=new MainActivityFragment();
-        ma.setVar(1);
+        ma.setVar();
         String s=ma.stringjoiner("","There");
         assertEquals("There ", s);
     }
@@ -98,7 +98,7 @@ public class MainActivityUnitTest extends ActivityUnitTestCase<MainActivity> {
         mLaunchIntent = new Intent(getInstrumentation().getTargetContext(), MainActivity.class);
         startActivity(mLaunchIntent, null, null);
         MainActivityFragment ma=new MainActivityFragment();
-        ma.setVar(1);
+        ma.setVar();
         String s=ma.stringjoiner("Hello","");
         assertEquals(" Hello", s);
     }
@@ -109,7 +109,7 @@ public class MainActivityUnitTest extends ActivityUnitTestCase<MainActivity> {
         mLaunchIntent = new Intent(getInstrumentation().getTargetContext(), MainActivity.class);
         startActivity(mLaunchIntent, null, null);
         MainActivityFragment ma=new MainActivityFragment();
-        ma.setVar(1);
+        ma.setVar();
         String s=ma.stringjoiner("", "");
         assertEquals(" ", s);
     }

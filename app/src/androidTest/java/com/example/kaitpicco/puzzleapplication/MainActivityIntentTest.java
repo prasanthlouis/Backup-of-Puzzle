@@ -24,7 +24,7 @@ public class MainActivityIntentTest extends ActivityInstrumentationTestCase2<Mai
 
 
     //Checking if separate intent is firing on phones. This will fail on tablets because a new activity
-    //being started. On tablets, its the same activity, you're adding a dynamic fragment. Make sure you turn on your screen.
+    //is not being started. On tablets, its the same activity, you're adding a dynamic fragment. Make sure you turn on your screen.
     @MediumTest
     public void testSendMessageToReceiverActivity() {
         final ImageButton sendToReceiverButton = (ImageButton)getActivity().findViewById(R.id.imageButton);
@@ -47,7 +47,7 @@ public class MainActivityIntentTest extends ActivityInstrumentationTestCase2<Mai
                 receiverActivityMonitor.waitForActivityWithTimeout(2000);
 
         //Checking if separate intent is firing on phones. This WILL FAIL on tablets because a new activity
-        //being started. On tablets, its the same activity, you're adding a dynamic fragment. Make sure you turn on your screen.
+        //is not being started. On tablets, its the same activity, you're adding a dynamic fragment. Make sure you turn on your screen.
         assertNotNull("ReceiverActivity is null", receiverActivity);
         assertEquals("Monitor for ReceiverActivity has not been called",
                 1, receiverActivityMonitor.getHits());

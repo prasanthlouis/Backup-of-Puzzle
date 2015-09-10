@@ -69,5 +69,9 @@ public class FullNameActivity extends AppCompatActivity {
         shareintent.putExtra(Intent.EXTRA_TEXT,"Hi there! I'm "+full_name+" #Brought to you by: PuzzleApplication" );
         return shareintent;
     }
-    //TODO:make scrollable
+
+
+
+
+
 }

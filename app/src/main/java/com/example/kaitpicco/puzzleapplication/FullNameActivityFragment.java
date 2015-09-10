@@ -32,6 +32,14 @@ public class FullNameActivityFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        textviewinit();
+
+        Intent i=getActivity().getIntent();
+        String full_name=i.getStringExtra("final_name");
+        fragmentText(full_name);
+    }
+
+    private void textviewinit() {
         TextView tv=(TextView)getActivity().findViewById(R.id.full_name);
         TextView tv2=(TextView)getActivity().findViewById(R.id.textView2);
         TextView tv3=(TextView)getActivity().findViewById(R.id.textView3);
@@ -41,9 +49,6 @@ public class FullNameActivityFragment extends Fragment {
         tv2.setTypeface(typeFace);
         tv3.setTypeface(typeFace2);
         tv.setTypeface(typeFace2);
-        Intent i=getActivity().getIntent();
-        String full_name=i.getStringExtra("final_name");
-        fragmentText(full_name);
     }
 
     public void fragmentText(String s)
