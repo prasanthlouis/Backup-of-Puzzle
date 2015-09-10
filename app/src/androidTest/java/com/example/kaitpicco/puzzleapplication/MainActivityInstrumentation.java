@@ -24,7 +24,7 @@ public class MainActivityInstrumentation extends ActivityInstrumentationTestCase
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-
+        setActivityInitialTouchMode(true);
 
     }
 

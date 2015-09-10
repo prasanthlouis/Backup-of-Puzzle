@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.kaitpicco.puzzleapplication" >
 <uses-permission android:name="android.permission.INTERNET"/>
+
     <uses-sdk android:minSdkVersion="16"/>
     <application
         android:allowBackup="true"

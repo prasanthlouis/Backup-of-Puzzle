@@ -23,12 +23,7 @@ public class MainActivityUnitTest extends ActivityUnitTestCase<MainActivity> {
 
     }
 
-  @SmallTest
-  public void testgetVar()
-  {
-      MainActivity ma=new MainActivity();
-      assertEquals(false, ma.getvar());
-  }
+
     @SmallTest
     public void testmainact()
     {
