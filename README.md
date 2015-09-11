@@ -24,3 +24,5 @@ But hey, no ads! Yay.)
 
 4) More modularity of code. (More functions)
 
+5) More unit tests. Including intent checking.
+
