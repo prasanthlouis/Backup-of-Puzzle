@@ -19,6 +19,9 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 /**
  * A placeholder fragment containing a simple view.
  */
@@ -59,6 +62,17 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
         edittextinit();
         spinnerinit();
         comm=(Behaviour)getActivity(); //Interface
+        if(Constants.type==Constants.Type.Free)
+        {
+            Log.v("MainActivity","Free");
+            AdView mAdView = (AdView) getActivity().findViewById(R.id.adView);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+        }
+        else
+        {
+            Log.v("MainActivity","Paid");
+        }
 
 
 

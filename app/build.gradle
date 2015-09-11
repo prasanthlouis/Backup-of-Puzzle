@@ -17,6 +17,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    productFlavors{
+        freeFlavor{
+            applicationId "com.psiuol12.kaitpicco.puzzleapplication.free"
+
+        }
+        paidFlavor{
+            applicationId "com.psiuol12.kaitpicco.puzzleapplication.paid"
+        }
+    }
 }
 
 dependencies {
@@ -24,4 +34,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.0.1'
     compile 'com.google.android.support:wearable:+'
     compile 'com.google.android.gms:play-services-wearable:+'
+    compile 'com.google.android.gms:play-services-ads:7.8.0'
 }

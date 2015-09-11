@@ -20,6 +20,8 @@ private static boolean mTwoPane;
         super.onCreate(savedInstanceState);
         setTheme(R.style.AppTheme);
         setContentView(R.layout.activity_main);
+
+
         if (findViewById(R.id.fragment_new) != null) {
             mTwoPane = true;
             if (savedInstanceState == null) {
