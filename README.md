@@ -4,7 +4,13 @@ My most stable commit is the "Lint Commit".
 
 But the newest commit shouldn't be having any problems. Please do take a look if you're interested. Check the commit messages for more info.
 
-Developed a Free as well as Paid version for the apps using gradle product flavors.
+Features added that weren't in the original version.
+
+1) More material design
+
+2) Overflow removed, instead added icons to action bar.
+
+3) Developed a Free as well as Paid version for the apps using gradle product flavors.
 
 Link will be updated soon!
 
@@ -15,3 +21,6 @@ Paid Version : https://play.google.com/store/apps/details?id=com.psiuol12.kaitpi
 (The paid version is free for now. I don't know the password for the master developer account. Sorry :D 
 
 But hey, no ads! Yay.)
+
+4) More modularity of code. (More functions)
+
