@@ -50,14 +50,19 @@ public class PeopleFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        tl=(TableLayout)getActivity().findViewById(R.id.table);
-        tl.setColumnStretchable(0, true);
-        tl.setColumnStretchable(1, true);
+        tableinit();
 
         FetchData fetchData=new FetchData();
         fetchData.execute();
 
 
+    }
+
+
+    private void tableinit() {
+        tl=(TableLayout)getActivity().findViewById(R.id.table);
+        tl.setColumnStretchable(0, true);
+        tl.setColumnStretchable(1, true);
     }
 
     private void extractData() {

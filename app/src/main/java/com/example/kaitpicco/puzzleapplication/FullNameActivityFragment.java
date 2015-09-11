@@ -2,6 +2,7 @@ package com.example.kaitpicco.puzzleapplication;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -32,12 +33,16 @@ public class FullNameActivityFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+        {View v=getActivity().findViewById(R.id.rellay);
+            MainActivityFragment ma=new MainActivityFragment();
+            ma.animateview(v);}
         textviewinit();
-
         Intent i=getActivity().getIntent();
         String full_name=i.getStringExtra("final_name");
         fragmentText(full_name);
     }
+
 
     private void textviewinit() {
         TextView tv=(TextView)getActivity().findViewById(R.id.full_name);

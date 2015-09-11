@@ -20,7 +20,7 @@ public class FullNameActivity extends AppCompatActivity {
         setTheme(R.style.AppTheme);
         setContentView(R.layout.activity_full_name);
         Intent i=getIntent();
-         full_name=i.getStringExtra("final_name");
+        full_name=i.getStringExtra("final_name");
 
 
     }

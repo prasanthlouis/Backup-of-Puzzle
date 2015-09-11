@@ -1,14 +1,18 @@
 package com.example.kaitpicco.puzzleapplication;
 
+import android.animation.Animator;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -32,6 +36,7 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_main, container, false);
+
     }
 
     @Override
@@ -47,6 +52,9 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+        {View v=getActivity().findViewById(R.id.scrollviewanim);
+            animateview(v);}
         buttoninit();
         edittextinit();
         spinnerinit();
@@ -63,6 +71,7 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
+
     }
 
     private void edittextinit() {
@@ -71,6 +80,7 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
         Typeface typeFace= Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Medium.ttf");
         first_name.setTypeface(typeFace);
         last_name.setTypeface(typeFace);
+
     }
 
     private void buttoninit() {
@@ -128,6 +138,34 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     public void setVar()
     {
         pos= 1;
+    }
+
+
+    public void animateview(View view1) {
+        final View view=view1;
+        view.getViewTreeObserver().addOnPreDrawListener(
+                new ViewTreeObserver.OnPreDrawListener() {
+                    public boolean onPreDraw() {
+                         {
+                            int finalHeight = view.getMeasuredHeight();
+                            int finalWidth = view.getMeasuredWidth();
+                            view.getViewTreeObserver().removeOnPreDrawListener(this);
+
+                            int cx = finalHeight / 2;
+                            int cy = finalWidth / 2;
+
+
+                            int finalRadius = Math.max(finalHeight, finalWidth);
+                            Animator anim = ViewAnimationUtils.createCircularReveal(view, cx, cy, 0, finalRadius);
+                            view.setVisibility(View.VISIBLE);
+                            anim.setDuration(1500);
+
+                            anim.start();
+
+                        }
+                        return true;
+                    }
+                });
     }
 
 
