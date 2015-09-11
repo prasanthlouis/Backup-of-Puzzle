@@ -12,4 +12,6 @@ Free Version : https://play.google.com/store/apps/details?id=com.psiuol12.kaitpi
 
 Paid Version : https://play.google.com/store/apps/details?id=com.psiuol12.kaitpicco.puzzleapplication.paid
 
-(The paid version is free for now. I don't know the password for the master developer account. Sorry :D )
+(The paid version is free for now. I don't know the password for the master developer account. Sorry :D 
+
+But hey, no ads! Yay.)
