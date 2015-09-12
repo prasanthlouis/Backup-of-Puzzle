@@ -240,10 +240,17 @@ Tested Devices:
 
 
 Nexus 4
+
 Nexus 7
+
 Nexus 9
+
 Nexus 10
+
 Android TV (Can’t Rotate Screen on Emulator, but should work fine)
+
 Nexus S
+
 Nexus One
+
 Unknown LDPI device
