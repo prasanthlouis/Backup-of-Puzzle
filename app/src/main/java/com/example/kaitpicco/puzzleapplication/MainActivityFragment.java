@@ -1,6 +1,8 @@
 package com.example.kaitpicco.puzzleapplication;
 
 import android.animation.Animator;
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Build;
@@ -31,7 +33,9 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     private ImageButton button;
     private MediaPlayer mp;
     private Behaviour comm;
+    private DBHelper db;
     private EditText first_name,last_name;
+   // private ArrayAdapter<String> listAdapter;
     public MainActivityFragment() {
     }
 
@@ -46,6 +50,7 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getActivity().getWindow().setBackgroundDrawableResource(R.drawable.wallpaper);
+        db=new DBHelper(getContext());
 
 
     }
@@ -61,7 +66,26 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
         buttoninit();
         edittextinit();
         spinnerinit();
+   //     listviewinit();
+        // Made  a database with history. But will implement as a separate activity because of
+        //restrictions on ldpi devices.
         comm=(Behaviour)getActivity(); //Interface
+       paidorfree();
+
+
+
+    }
+
+
+ /*   private void listviewinit() {
+       ListView lv=(ListView)getActivity().findViewById(R.id.listview);
+        listAdapter= new ArrayAdapter<>(getActivity(), R.layout.arrayview, 0);
+        lv.setAdapter(listAdapter);
+
+
+    }*/
+
+    private void paidorfree() {
         if(Constants.type==Constants.Type.Free)
         {
             Log.v("MainActivity","Free");
@@ -73,9 +97,6 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
         {
             Log.v("MainActivity","Paid");
         }
-
-
-
     }
 
     private void spinnerinit() {
@@ -107,7 +128,33 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
         super.onResume();
         mp=MediaPlayer.create(getActivity(), R.raw.button_click);
         button.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.buttons));
+     //   addtolist();
     }
+/*
+    private void addtolist() {
+        String projection[]={ContractClass.BaseEntry.FIRSTNAME,ContractClass.BaseEntry.LASTNAME};
+        SQLiteDatabase sqldb=db.getReadableDatabase();
+        Cursor c = sqldb.query(
+                ContractClass.BaseEntry.TABLE_NAME,
+                projection,
+                null,
+                null,
+                null,
+                null,
+                null
+
+        );
+        if(c.moveToFirst())
+        {
+            do {
+                String s=c.getString(0)+" "+c.getString(1);
+                Log.v("MainActivityFragment",s);
+              listAdapter.add(s);
+            }while(c.moveToNext());
+        }
+
+    }
+    */
 
     @Override
     public void onClick(View v) {
@@ -122,12 +169,25 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
         }
         else{
         final_name=stringjoiner(first_nametext,last_nametext);}
-        if(!final_name.equals(""))
-        comm.paneData(final_name);
+        if(!final_name.equals("")) {
+            addtodatabase();
+            comm.paneData(final_name);
+        }
 
 
 
 
+    }
+
+    private void addtodatabase() {
+
+        SQLiteDatabase sqldb = db.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(ContractClass.BaseEntry.FIRSTNAME, first_name.getText().toString());
+        contentValues.put(ContractClass.BaseEntry.LASTNAME, last_name.getText().toString());
+        long newRowId;
+        newRowId = sqldb.insert(ContractClass.BaseEntry.TABLE_NAME, null, contentValues);
+        Log.v("MAINACT", newRowId + "");
     }
 
     private void blankchecker(String first_nametext, String last_nametext) {
@@ -137,7 +197,7 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
         {last_name.setError("You Didn't Enter Last Name");}
     }
 
-    public String stringjoiner(String first_nametext,String last_nametext) {
+    private String stringjoiner(String first_nametext, String last_nametext) {
         String final_name;
             if (pos == 0) {
                 final_name = first_nametext + " " +last_nametext ;

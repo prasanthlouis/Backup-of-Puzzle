@@ -2,6 +2,8 @@ package com.example.kaitpicco.puzzleapplication;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -64,6 +66,11 @@ private static boolean mTwoPane;
 
             case R.id.See_People: Intent intent=new Intent(this,People.class);
                 startActivity(intent);
+                return true;
+            case R.id.youtubevid:Intent intentvid=new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=03Im4B9nyTE"));
+                PackageManager packageManager = getPackageManager();
+                if (intentvid.resolveActivity(packageManager) != null)
+                startActivity(intentvid);
                 return true;
         }
         //noinspection SimplifiableIfStatement

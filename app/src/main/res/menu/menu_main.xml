@@ -10,4 +10,10 @@
         app:showAsAction="ifRoom"
         android:title="@string/sharing_one"
         app:actionProviderClass="android.support.v7.widget.ShareActionProvider"/>
+    <item
+        android:id="@+id/youtubevid"
+        android:title="@string/youtube_video"
+        android:icon="@drawable/video"
+        app:showAsAction="ifRoom"
+        />
 </menu>
