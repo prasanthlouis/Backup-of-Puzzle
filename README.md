@@ -32,6 +32,8 @@ But hey, no ads! Yay.)
 
 7)More unit tests. Including intent checking.
 
+8)Used proguard for app code obfuscation and reduced size of apk
+
 
 
 Old Stuff:
