@@ -26,7 +26,7 @@ But hey, no ads! Yay.)
 
 5) Database for past entries
 
-6) Promo video accessible from action bar
+6) Promo video accessible from action bar. Check it out here: https://www.youtube.com/watch?v=03Im4B9nyTE
 
 5) More unit tests. Including intent checking.
 
