@@ -24,5 +24,9 @@ But hey, no ads! Yay.)
 
 4) More modularity of code. (More functions)
 
+5) Database for past entries
+
+6) Promo video accessible from action bar
+
 5) More unit tests. Including intent checking.
 
