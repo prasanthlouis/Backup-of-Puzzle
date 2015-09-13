@@ -197,7 +197,7 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
         {last_name.setError("You Didn't Enter Last Name");}
     }
 
-    private String stringjoiner(String first_nametext, String last_nametext) {
+    public String stringjoiner(String first_nametext, String last_nametext) {
         String final_name;
             if (pos == 0) {
                 final_name = first_nametext + " " +last_nametext ;

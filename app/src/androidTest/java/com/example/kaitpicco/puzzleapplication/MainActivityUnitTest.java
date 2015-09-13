@@ -4,11 +4,10 @@ import android.content.Intent;
 import android.test.ActivityUnitTestCase;
 import android.test.suitebuilder.annotation.SmallTest;
 
-public class MainActivityUnitTest extends ActivityUnitTestCase<MainActivity> {
-    private Intent mLaunchIntent;
-    public MainActivityUnitTest() {
-        super(MainActivity.class);
-    }
+import junit.framework.TestCase;
+
+public class MainActivityUnitTest extends TestCase {
+
 
     @Override
     protected void setUp() throws Exception {
@@ -21,18 +20,11 @@ public class MainActivityUnitTest extends ActivityUnitTestCase<MainActivity> {
     }
 
 
-    @SmallTest
-    public void testmainact()
-    {
-        mLaunchIntent = new Intent(getInstrumentation().getTargetContext(), MainActivity.class);
-        startActivity(mLaunchIntent, null, null);
-    }
+
 
     @SmallTest
     public void teststringchecker()
     {
-        mLaunchIntent = new Intent(getInstrumentation().getTargetContext(), MainActivity.class);
-        startActivity(mLaunchIntent, null, null);
         MainActivityFragment ma=new MainActivityFragment();
         String s=ma.stringjoiner("Hello","There");
         assertEquals("Hello There", s);
@@ -41,8 +33,7 @@ public class MainActivityUnitTest extends ActivityUnitTestCase<MainActivity> {
     @SmallTest
     public void teststringchecker2()
     {
-        mLaunchIntent = new Intent(getInstrumentation().getTargetContext(), MainActivity.class);
-        startActivity(mLaunchIntent, null, null);
+
         MainActivityFragment ma=new MainActivityFragment();
         String s=ma.stringjoiner("","There");
         assertEquals(" There", s);
@@ -51,8 +42,6 @@ public class MainActivityUnitTest extends ActivityUnitTestCase<MainActivity> {
     @SmallTest
       public void teststringchecker3()
     {
-        mLaunchIntent = new Intent(getInstrumentation().getTargetContext(), MainActivity.class);
-        startActivity(mLaunchIntent, null, null);
         MainActivityFragment ma=new MainActivityFragment();
         String s=ma.stringjoiner("Hello","");
         assertEquals("Hello ", s);
@@ -61,8 +50,7 @@ public class MainActivityUnitTest extends ActivityUnitTestCase<MainActivity> {
     @SmallTest
     public void teststringchecker4()
     {
-        mLaunchIntent = new Intent(getInstrumentation().getTargetContext(), MainActivity.class);
-        startActivity(mLaunchIntent, null, null);
+
         MainActivityFragment ma=new MainActivityFragment();
         String s=ma.stringjoiner("","");
         assertEquals(" ", s);
@@ -73,8 +61,7 @@ public class MainActivityUnitTest extends ActivityUnitTestCase<MainActivity> {
     @SmallTest
     public void teststringchecker5()
     {
-        mLaunchIntent = new Intent(getInstrumentation().getTargetContext(), MainActivity.class);
-        startActivity(mLaunchIntent, null, null);
+
         MainActivityFragment ma=new MainActivityFragment();
         ma.setVar();
         String s=ma.stringjoiner("Hello","There");
@@ -84,8 +71,7 @@ public class MainActivityUnitTest extends ActivityUnitTestCase<MainActivity> {
     @SmallTest
     public void teststringchecker6()
     {
-        mLaunchIntent = new Intent(getInstrumentation().getTargetContext(), MainActivity.class);
-        startActivity(mLaunchIntent, null, null);
+
         MainActivityFragment ma=new MainActivityFragment();
         ma.setVar();
         String s=ma.stringjoiner("","There");
@@ -95,8 +81,7 @@ public class MainActivityUnitTest extends ActivityUnitTestCase<MainActivity> {
     @SmallTest
     public void teststringchecker7()
     {
-        mLaunchIntent = new Intent(getInstrumentation().getTargetContext(), MainActivity.class);
-        startActivity(mLaunchIntent, null, null);
+
         MainActivityFragment ma=new MainActivityFragment();
         ma.setVar();
         String s=ma.stringjoiner("Hello","");
@@ -106,8 +91,7 @@ public class MainActivityUnitTest extends ActivityUnitTestCase<MainActivity> {
     @SmallTest
     public void teststringchecker8()
     {
-        mLaunchIntent = new Intent(getInstrumentation().getTargetContext(), MainActivity.class);
-        startActivity(mLaunchIntent, null, null);
+
         MainActivityFragment ma=new MainActivityFragment();
         ma.setVar();
         String s=ma.stringjoiner("", "");
